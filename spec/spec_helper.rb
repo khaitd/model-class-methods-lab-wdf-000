@@ -18,9 +18,13 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "default"
 
+
   config.before do
+
     Rails.application.load_seed
   end
+
+
 
   config.after do
     (ActiveRecord::Base.subclasses - [ActiveRecord::SchemaMigration]).each(&:delete_all)
